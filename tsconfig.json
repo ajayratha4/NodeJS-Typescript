@@ -1,15 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES6",
     "module": "NodeNext",
-    "lib": ["es6"],
-    "allowJs": true,
+    "removeComments": true,
+    "rootDir": "./",
     "outDir": "build",
-    "rootDir": "src",
-    "strict": true,
+    "moduleResolution": "node",
     "noImplicitAny": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "baseUrl": "src"
-  }
+    "pretty": true
+  },
+  "exclude": ["node_modules", "build"]
 }
