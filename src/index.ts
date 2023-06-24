@@ -2,8 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import { middleware } from "./middleware";
 import { errorHandler } from "./middleware/errorHandler";
-import usersRouter from "./routes/usersRouter";
-import feedRouter from "./routes/feedRouter"; // Correct import for feedRouter
+import usersRouter from "./routes/user.route";
+import feedRouter from "./routes/feed.route"; // Correct import for feedRouter
 
 dotenv.config();
 
