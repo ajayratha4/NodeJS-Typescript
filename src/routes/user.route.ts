@@ -1,9 +1,33 @@
 import express from "express";
-import { createUser, getUsers } from "../controllers/user.controller";
+import * as userController from "../controllers/user.controller";
+import { authenticate, authorizeRoles } from "../middleware/auth.middleware";
+import { UserRole } from "@prisma/client";
 
 const router = express.Router();
 
-router.get("/", getUsers);
-router.post("/create", createUser);
+router.get(
+  "/:id",
+  authenticate,
+  authorizeRoles([UserRole.SUPER_ADMIN, UserRole.ADMIN]),
+  userController.getUser
+);
+router.post(
+  "/create",
+  authenticate,
+  authorizeRoles([UserRole.SUPER_ADMIN]),
+  userController.createUser
+);
+router.put(
+  "/role/:id",
+  authenticate,
+  authorizeRoles([UserRole.SUPER_ADMIN]),
+  userController.updateRole
+);
+router.delete(
+  "/delete/:id",
+  authenticate,
+  authorizeRoles([UserRole.SUPER_ADMIN]),
+  userController.deleteUser
+);
 
 export default router;

@@ -9,5 +9,6 @@
     "noImplicitAny": true,
     "pretty": true
   },
-  "exclude": ["node_modules", "build"]
+  "exclude": ["node_modules", "build"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts"]
 }
