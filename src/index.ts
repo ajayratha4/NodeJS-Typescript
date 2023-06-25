@@ -3,7 +3,8 @@ import dotenv from "dotenv";
 import { middleware } from "./middleware";
 import { errorHandler } from "./middleware/error.middleware";
 import usersRouter from "./routes/user.route";
-import feedRouter from "./routes/feed.route"; // Correct import for feedRouter
+import feedRouter from "./routes/feed.route";
+import authRouter from "./routes/auth.route";
 
 dotenv.config();
 
@@ -17,6 +18,9 @@ app.use("/users", usersRouter);
 
 // Use the feedRouter for the "/feed" path
 app.use("/feed", feedRouter);
+
+// Use the authRouter for the "/auth" path
+app.use("/auth", authRouter);
 
 // Route handler that will be executed for all requests
 app.use("*", (req, res, next) => {

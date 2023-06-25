@@ -8,13 +8,13 @@ const router = express.Router();
 router.get(
   "/:id",
   authenticate,
-  authorizeRoles([UserRole.SUPER_ADMIN, UserRole.ADMIN]),
+  authorizeRoles([UserRole.SUPER_ADMIN]),
   userController.getUser
 );
 router.post(
   "/create",
   authenticate,
-  authorizeRoles([UserRole.SUPER_ADMIN]),
+  authorizeRoles([UserRole.SUPER_ADMIN, UserRole.ADMIN]),
   userController.createUser
 );
 router.put(
@@ -26,7 +26,7 @@ router.put(
 router.delete(
   "/delete/:id",
   authenticate,
-  authorizeRoles([UserRole.SUPER_ADMIN]),
+  authorizeRoles([UserRole.SUPER_ADMIN, UserRole.ADMIN]),
   userController.deleteUser
 );
 
