@@ -16,10 +16,6 @@ services:
       - $NODE_PORT:$NODE_PORT
     environment:
       - NODE_PORT=$NODE_PORT
-      - DB_HOST=mysqldb
-      - DB_USER=$MYSQLDB_USER
-      - DB_PASSWORD=$MYSQLDB_ROOT_PASSWORD
-      - DB_NAME=$MYSQLDB_DATABASE
-      - DB_PORT=$MYSQL_DB_PORT
+      - DATABASE_URL=mysql://root:$MYSQLDB_ROOT_PASSWORD@localhost:$MYSQL_DB_PORT/$MYSQLDB_DATABASE
     depends_on:
       - mysqldb
