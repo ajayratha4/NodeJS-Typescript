@@ -20,7 +20,7 @@ Clone the repository:
 
 bash
 Copy code
-git clone https://github.com/your-username/node-express-ts-prisma-mysql.git
+git clone [https://github.com/your-username/node-express-ts-prisma-mysql.git](https://github.com/ajayratha4/NodeJS-Typescript)
 Navigate to the project directory:
 
 bash
@@ -45,7 +45,7 @@ Start the development server:
 bash
 Copy code
 npm run dev
-The server should now be running at http://localhost:3000. You can test the API using tools like Postman or curl.
+The server should now be running at http://localhost:8080. You can test the API using tools like Postman or curl.
 
 Project Structure
 The project has the following structure:
