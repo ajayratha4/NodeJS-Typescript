@@ -5,6 +5,7 @@ import { errorHandler } from "./middleware/error.middleware";
 import usersRouter from "./routes/user.route";
 import feedRouter from "./routes/feed.route";
 import authRouter from "./routes/auth.route";
+import logRouter from "./routes/log.route";
 import { onStartupCreateCredentials } from "./services/user.service";
 import { autoDeleting } from "./logs";
 
@@ -23,6 +24,9 @@ app.use("/feed", feedRouter);
 
 // Use the authRouter for the "/auth" path
 app.use("/auth", authRouter);
+
+// Use the logRouter for the "/log" path
+app.use("/log", logRouter);
 
 // Route handler that will be executed for all requests
 app.use("*", (req, res, next) => {
