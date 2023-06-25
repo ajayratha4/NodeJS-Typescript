@@ -9,7 +9,7 @@ export const getUser = async (
   try {
     const userId = parseInt(req.params.id);
 
-    const user = await userService.getUser(userId);
+    const user = await userService.getUser({ id: userId });
     res.send(user);
   } catch (error) {
     next(new Error(error.message));
@@ -55,9 +55,9 @@ export const deleteUser = async (
   next: NextFunction
 ) => {
   try {
-    const userId = parseInt(req.params.id);
+    const deleteUserId = parseInt(req.params.id);
 
-    const user = await userService.deleteUser(userId);
+    const user = await userService.deleteUser(deleteUserId);
     res.status(200).json({ message: `successfully delete the ${user.name}` });
   } catch (error) {
     next(new Error(error.message));

@@ -5,9 +5,9 @@ import { hashPassword } from "../utils/utils";
 
 const selectUser = { name: true, id: true, email: true, role: true };
 
-export const getUser = async (userId: number) => {
+export const getUser = async (whereCondition: Object) => {
   const user = await prisma.user.findUnique({
-    where: { id: userId },
+    where: whereCondition,
     select: selectUser,
   });
 
@@ -50,9 +50,7 @@ export const onStartupCreateCredentials = async () => {
     password: "123",
   };
   try {
-    const existingUser = await prisma.user.findUnique({
-      where: { email: user.email },
-    });
+    const existingUser = await getUser({ email: user.email });
     if (!existingUser) {
       await createUser(user as User);
     }

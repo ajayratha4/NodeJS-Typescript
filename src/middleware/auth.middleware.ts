@@ -36,19 +36,21 @@ export const authenticate = async (
   }
 };
 
-export const authorizeRoles = (roles: string[]) => {
+export const authorizeRoles = (roles: string[], path?: string) => {
   return (req: Request, res: Response, next: NextFunction) => {
     const role = req.user.role;
-    const path = req.originalUrl;
 
     if (!roles.includes(role)) {
       throw new Error("Forbidden");
     }
 
-    const ability = ROLES[role].permissions.find((item) => item.path === path);
+    if (path) {
+      const permissions = ROLES[role].permissions;
+      const ability = permissions.find((item) => item.path === path);
 
-    if (ability && !ability.can(req)) {
-      throw new Error(ability.error);
+      if (ability && !ability.can(req)) {
+        throw new Error(ability.error);
+      }
     }
 
     next();
