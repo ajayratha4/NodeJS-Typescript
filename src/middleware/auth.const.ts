@@ -5,7 +5,7 @@ export const ROLES = {
   SUPER_ADMIN: {
     permissions: [
       {
-        path: "/create",
+        path: "/user/create",
         can: (req: Request) => {
           const role = req.body.role;
           return role === UserRole.ADMIN || role === UserRole.BASIC;
@@ -17,7 +17,7 @@ export const ROLES = {
   ADMIN: {
     permissions: [
       {
-        path: "/create",
+        path: "/user/create",
         can: (req: Request) => {
           const role = req.body.role;
           return role === UserRole.BASIC;
@@ -29,7 +29,7 @@ export const ROLES = {
   BASIC: {
     permissions: [
       {
-        path: "/create",
+        path: "/user/create",
         can: (_req: Request) => false,
         error: "you do not have permission to perform this operation",
       },

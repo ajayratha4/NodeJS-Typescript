@@ -19,14 +19,18 @@ enum UserRole {
 model User {
   id       Int      @id @default(autoincrement())
   name     String
-  role     UserRole
+  role     UserRole @default(BASIC)
   email    String   @unique
   password String
+  feeds    Feed[]   @relation("UserFeed")
 }
+
 
 model Feed {
   id          Int      @id @default(autoincrement())
   name        String
   url         String
   description String
+  users   User[]  @relation("UserFeed")
+
 }

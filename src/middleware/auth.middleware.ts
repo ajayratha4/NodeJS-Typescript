@@ -39,7 +39,7 @@ export const authenticate = async (
 export const authorizeRoles = (roles: string[]) => {
   return (req: Request, res: Response, next: NextFunction) => {
     const role = req.user.role;
-    const path = req.path;
+    const path = req.originalUrl;
 
     if (!roles.includes(role)) {
       throw new Error("Forbidden");
