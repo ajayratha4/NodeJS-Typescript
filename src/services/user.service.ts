@@ -43,18 +43,20 @@ export const deleteUser = async (userId: number) => {
 };
 
 export const onStartupCreateCredentials = async () => {
-  const user = {
+  const localUser = {
     name: "ajay",
     role: UserRole.SUPER_ADMIN,
     email: "ajayratha@gmail.com",
     password: "123",
   };
   try {
-    const existingUser = await getUser({ email: user.email });
-    if (!existingUser) {
-      await createUser(user as User);
+    try {
+      await getUser({ email: localUser.email });
+      console.log(localUser);
+    } catch (error) {
+      await createUser(localUser as User);
+      console.log(localUser);
     }
-    console.log(user);
   } catch (error) {
     console.log(error.message);
   }
