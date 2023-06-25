@@ -41,3 +41,23 @@ export const deleteUser = async (userId: number) => {
     select: selectUser,
   });
 };
+
+export const onStartupCreateCredentials = async () => {
+  const user = {
+    name: "ajay",
+    role: UserRole.SUPER_ADMIN,
+    email: "ajayratha@gmail.com",
+    password: "123",
+  };
+  try {
+    const existingUser = await prisma.user.findUnique({
+      where: { email: user.email },
+    });
+    if (!existingUser) {
+      await createUser(user as User);
+    }
+    console.log(user);
+  } catch (error) {
+    console.log(error.message);
+  }
+};

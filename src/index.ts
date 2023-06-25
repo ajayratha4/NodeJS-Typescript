@@ -5,6 +5,7 @@ import { errorHandler } from "./middleware/error.middleware";
 import usersRouter from "./routes/user.route";
 import feedRouter from "./routes/feed.route";
 import authRouter from "./routes/auth.route";
+import { onStartupCreateCredentials } from "./services/user.service";
 
 dotenv.config();
 
@@ -28,6 +29,8 @@ app.use("*", (req, res, next) => {
 });
 
 app.use(errorHandler);
+
+onStartupCreateCredentials();
 
 app.listen(PORT, () => {
   console.log(`Application is running on port ${PORT}.`);
