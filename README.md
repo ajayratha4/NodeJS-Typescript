@@ -18,7 +18,7 @@ MySQL database
 Getting Started
 Clone the repository:
 
-git clone [https://github.com/your-username/node-express-ts-prisma-mysql.git](https://github.com/ajayratha4/NodeJS-Typescript)
+git clone https://github.com/ajayratha4/NodeJS-Typescript
 Navigate to the project directory:
 
 cd node-express-ts-prisma-mysql
