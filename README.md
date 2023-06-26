@@ -18,18 +18,12 @@ MySQL database
 Getting Started
 Clone the repository:
 
-bash
-Copy code
 git clone [https://github.com/your-username/node-express-ts-prisma-mysql.git](https://github.com/ajayratha4/NodeJS-Typescript)
 Navigate to the project directory:
 
-bash
-Copy code
 cd node-express-ts-prisma-mysql
 Install the dependencies:
 
-bash
-Copy code
 npm install
 Set up the database:
 
@@ -37,21 +31,14 @@ Create a new MySQL database.
 Configure the database connection details in the .env file. You can find an example in .env.example.
 Run the database migrations:
 
-bash
-Copy code
 npx prisma migrate dev
 Start the development server:
 
-bash
-Copy code
 npm run dev
 The server should now be running at http://localhost:8080. You can test the API using tools like Postman or curl.
 
 Project Structure
 The project has the following structure:
-
-graphql
-Copy code
 .
 ├── src
 │   ├── controllers      # Request handlers for routes
@@ -60,14 +47,15 @@ Copy code
 │   ├── routes           # API route definitions
 │   ├── services         # Business logic services
 │   ├── utils            # Utility functions
-│   ├── index.ts         # Entry point for the server
-├── prisma               # Prisma migrations and modals
+│   ├── app.ts           # Express application configuration
+│   ├── server.ts        # Entry point for the server
+├── migrations           # Prisma migrations
 ├── .env.example         # Example environment variables
 ├── .gitignore           # Git ignore file
 ├── package.json         # NPM dependencies and scripts
-├── nodemon.json         # Nodemon configuration
-├── .env                 # to Store environment variable
+├── tsconfig.json        # TypeScript configuration
 └── README.md            # Project readme file
+
 Available Scripts
 In the project directory, you can run the following commands:
 
