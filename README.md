@@ -39,43 +39,6 @@ The server should now be running at http://localhost:8080. You can test the API 
 
 Project Structure
 The project has the following structure:
-
-+-- bin // Custom tasks
-+-- dist // Source build
-+-- public // Static Files
-+-- src
-|   +-- config // Environment Configuration
-|   +-- entity // TypeORM Entities
-|   +-- auth // Authentication
-|   +-- common // Global Nest Module
-|   |   +-- constants // Constant value and Enum
-|   |   +-- controllers // Nest Controllers
-|   |   +-- decorators // Nest Decorators
-|   |   +-- dto // DTO (Data Transfer Object) Schema, Validation
-|   |   +-- filters // Nest Filters
-|   |   +-- guards // Nest Guards
-|   |   +-- interceptors // Nest Interceptors
-|   |   +-- interfaces // TypeScript Interfaces
-|   |   +-- middleware // Nest Middleware
-|   |   +-- pipes // Nest Pipes
-|   |   +-- providers // Nest Providers
-|   |   +-- * // models, repositories, services...
-|   +-- shared // Shared Nest Modules
-|   +-- gql // GraphQL Structure
-|   +-- * // Other Nest Modules, non-global, same as common structure above
-+-- test // Jest testing
-+-- typings // Modules and global type definitions
-
-// Module structure
-// Add folders according to module scale. If it's small, you don't need to add folders.
-+-- src/greeter
-|   +-- * // folders
-|   +-- greeter.constant.ts
-|   +-- greeter.controller.ts
-|   +-- greeter.service.ts
-|   +-- greeter.module.ts
-|   +-- greeter.*.ts
-|   +-- index.ts
 .
 ├── src
 │   ├── controllers      # Request handlers for routes
