@@ -1,7 +1,8 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import * as feedController from "../controllers/feed.controller";
 import { authenticate, authorizeRoles } from "../middleware/auth.middleware";
 import { UserRole } from "@prisma/client";
+import { RolePath } from "../middleware/auth.const";
 
 const router = express.Router();
 
@@ -23,7 +24,7 @@ router.post(
 router.delete(
   "/delete/:id",
   authenticate,
-  authorizeRoles([UserRole.SUPER_ADMIN]),
+  authorizeRoles([UserRole.SUPER_ADMIN, UserRole.ADMIN], RolePath.DeleteFeed),
   feedController.deleteFeed
 );
 

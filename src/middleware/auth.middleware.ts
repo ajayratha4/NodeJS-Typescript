@@ -37,19 +37,20 @@ export const authenticate = async (
 };
 
 export const authorizeRoles = (roles: string[], path?: string) => {
-  return (req: Request, res: Response, next: NextFunction) => {
+  return async (req: Request, res: Response, next: NextFunction) => {
     const role = req.user.role;
 
     if (!roles.includes(role)) {
-      throw new Error("Forbidden");
+      next(new Error("Forbidden"));
     }
 
     if (path) {
       const permissions = ROLES[role].permissions;
       const ability = permissions.find((item) => item.path === path);
+      const can = await ability.can(req);
 
-      if (ability && !ability.can(req)) {
-        throw new Error(ability.error);
+      if (ability && !can) {
+        next(new Error(ability.error));
       }
     }
 

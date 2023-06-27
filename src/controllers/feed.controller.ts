@@ -49,12 +49,17 @@ export const assignFeed = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { feedId, userId } = req.body;
+  const { feedId, userId, canDeletebleFeeds } = req.body;
   if (!feedId || !userId) {
     throw new Error("Invalid arguments feedId or userId");
   }
   try {
-    const feed = await feedService.assignFeed(req.user.id, userId, feedId);
+    const feed = await feedService.assignFeed(
+      req.user.id,
+      userId,
+      feedId,
+      canDeletebleFeeds
+    );
     res.send(feed);
   } catch (error) {
     next(new Error(error.message));
