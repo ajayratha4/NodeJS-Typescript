@@ -17,20 +17,20 @@ enum UserRole {
 }
 
 model User {
-  id       Int      @id @default(autoincrement())
-  name     String
-  role     UserRole @default(BASIC)
-  email    String   @unique
-  password String
-  feeds    Feed[]   @relation("UserFeed")
+  id                Int      @id @default(autoincrement())
+  name              String
+  role              UserRole @default(BASIC)
+  email             String   @unique
+  password          String
+  feeds             Feed[]   @relation("UserFeeds")
+  canDeletebleFeeds  Feed[]   @relation("FeedAccess")
 }
 
-
 model Feed {
-  id          Int      @id @default(autoincrement())
-  name        String
-  url         String
-  description String
-  users   User[]  @relation("UserFeed")
-
+  id                Int      @id @default(autoincrement())
+  name              String
+  url               String
+  description       String
+  users             User[]   @relation("UserFeeds")
+  feedAccess        User[]   @relation("FeedAccess")
 }
