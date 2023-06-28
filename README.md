@@ -21,6 +21,10 @@ Clone the repository:
 git clone https://github.com/ajayratha4/NodeJS-Typescript
 Navigate to the project directory:
 
+Using docker :-
+    cd docker
+    docker-compose up --build
+
 cd node-express-ts-prisma-mysql
 Install the dependencies:
 
